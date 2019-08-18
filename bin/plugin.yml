@@ -1,0 +1,4 @@
+ name: CasperLib
+ version: 1.0
+ author: CasperStudios
+ main: casperlib.Main
