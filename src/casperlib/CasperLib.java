@@ -37,10 +37,20 @@ public class CasperLib {
 		return teamManager;
 	}
 
+	//Return a list of all Person objects currently connected to the server
 	public static List<Person> getOnlinePeople() {
 		List<Person> p = new ArrayList<Person>();
 		p.addAll(People.getAllValues());
 		return p;
+	}
+	
+	public static void updateAllScoreboards() {
+		for(Person p : getOnlinePeople()) {
+			if(p.getBoard() != null) {
+				p.getBoard().update();
+				p.getBoard().updateTeams();
+			}
+		}
 	}
 
 }

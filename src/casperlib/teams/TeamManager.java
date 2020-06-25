@@ -19,4 +19,13 @@ public class TeamManager {
 		}
 		allTeams.clear();
 	}
+	
+	public Team getTeam(String id) {
+		for(Team t : allTeams) {
+			if(t.getId() == id) {
+				return t;
+			}
+		}
+		return null;
+	}
 }

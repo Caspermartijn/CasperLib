@@ -14,7 +14,7 @@ public class CConfig {
 	//This class is made to make making config's easier!
 	
 	private final JavaPlugin PLUGIN;
-	private final String FILENAME;
+	protected final String FILENAME;
 	private final File FOLDER;
 	private FileConfiguration config;
 	private File configFile;

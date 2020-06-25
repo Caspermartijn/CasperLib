@@ -13,8 +13,9 @@ import casperlib.players.People;
 
 public class JoinAndLeaveEvents implements Listener {
 
-	//The class here adds a Player object to the CasperLib plugin and removes them when they leave!
-	
+	// The class here adds a Player object to the CasperLib plugin and removes them
+	// when they leave!
+
 	JavaPlugin instance;
 
 	public JoinAndLeaveEvents(JavaPlugin instance) {
@@ -26,15 +27,17 @@ public class JoinAndLeaveEvents implements Listener {
 		People.add(instance, event.getPlayer());
 		PersonJoinEvent pje = new PersonJoinEvent(People.get(event.getPlayer()));
 		Bukkit.getPluginManager().callEvent(pje);
-		event.getPlayer().teleport(pje.getCustomSpawnLocation());
-		Bukkit.getScheduler().scheduleSyncDelayedTask(instance,new Runnable() {
+		if (pje.getCustomSpawnLocation() != null) {
+			event.getPlayer().teleport(pje.getCustomSpawnLocation());
+			Bukkit.getScheduler().scheduleSyncDelayedTask(instance, new Runnable() {
 
-			@Override
-			public void run() {
-				event.getPlayer().teleport(pje.getCustomSpawnLocation());
-			}
-		
-		},2l);
+				@Override
+				public void run() {
+					event.getPlayer().teleport(pje.getCustomSpawnLocation());
+				}
+
+			}, 1l);
+		}
 	}
 
 	@EventHandler
